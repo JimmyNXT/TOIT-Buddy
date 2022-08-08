@@ -9,5 +9,4 @@ public class ToitBuddyApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ToitBuddyApplication.class, args);
 	}
-
 }

@@ -1,13 +1,12 @@
 package com.MTechConsulting.TOITBuddy.Logic.Service;
 
 import com.MTechConsulting.TOITBuddy.Domain.DTO.PubSubMessageDTO;
-import com.MTechConsulting.TOITBuddy.Domain.DTO.SubscriptionDTO;
+import com.MTechConsulting.TOITBuddy.Domain.DTO.PubSubSubscriptionDTO;
 import com.MTechConsulting.TOITBuddy.Logic.Translator.PubSubTranslator;
 import io.toit.proto.toit.api.pubsub.SubscribeProto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -22,7 +21,7 @@ public class PubSubService {
         this.translator = translator;
     }
 
-    public List<SubscriptionDTO> getSubscriptions(){
+    public List<PubSubSubscriptionDTO> getSubscriptions(){
         return translator.getSubscriptionDTOs();
     }
 

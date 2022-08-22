@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class SubscriptionDTO {
+public class PubSubSubscriptionDTO {
     private String name;
     private String topic;
 }

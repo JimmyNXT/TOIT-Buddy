@@ -1,7 +1,7 @@
 package com.MTechConsulting.TOITBuddy.Logic.Translator;
 
 import com.MTechConsulting.TOITBuddy.Domain.DTO.PubSubMessageDTO;
-import com.MTechConsulting.TOITBuddy.Domain.DTO.SubscriptionDTO;
+import com.MTechConsulting.TOITBuddy.Domain.DTO.PubSubSubscriptionDTO;
 import com.MTechConsulting.TOITBuddy.GRPC.PubSubClient;
 import io.toit.proto.toit.api.pubsub.SubscribeProto;
 import io.toit.proto.toit.model.pubsub.MessageProto;
@@ -25,12 +25,12 @@ public class PubSubTranslator {
         return client.getSubscriptions();
     }
 
-    public List<SubscriptionDTO> getSubscriptionDTOs(){
+    public List<PubSubSubscriptionDTO> getSubscriptionDTOs(){
         return client.getSubscriptions().stream().map(this::modalToDto).collect(Collectors.toList());
     }
 
-    public SubscriptionDTO modalToDto(SubscribeProto.Subscription modal){
-        return new SubscriptionDTO(modal.getName(), modal.getTopic());
+    public PubSubSubscriptionDTO modalToDto(SubscribeProto.Subscription modal){
+        return new PubSubSubscriptionDTO(modal.getName(), modal.getTopic());
     }
 
     public List<MessageProto.Envelope> getSubscriptionMessages(SubscribeProto.Subscription subscription){

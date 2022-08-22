@@ -1,7 +1,7 @@
 package com.MTechConsulting.TOITBuddy.Presentation;
 
 import com.MTechConsulting.TOITBuddy.Domain.DTO.PubSubMessageDTO;
-import com.MTechConsulting.TOITBuddy.Domain.DTO.SubscriptionDTO;
+import com.MTechConsulting.TOITBuddy.Domain.DTO.PubSubSubscriptionDTO;
 import com.MTechConsulting.TOITBuddy.Logic.Service.PubSubService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class PubSubController {
 
     @GetMapping("/Subscriptions")
     @ApiOperation(nickname = "Get Subscriptions", value = "Get the Subscriptions")
-    public ResponseEntity<List<SubscriptionDTO>> getSubscriptions(){
+    public ResponseEntity<List<PubSubSubscriptionDTO>> getSubscriptions(){
         return new ResponseEntity<>(service.getSubscriptions(), HttpStatus.OK);
     }
 

@@ -14,13 +14,13 @@ public class PubSubClient {
         this.client = (new ClientManager()).getSubscribeGrpc();
     }
 
-    public List<SubscribeProto.Subscription> getSubscriptionList(){
+    public List<SubscribeProto.Subscription> getSubscriptions(){
         SubscribeProto.ListSubscriptionsRequest request = SubscribeProto.ListSubscriptionsRequest.newBuilder().build();
         SubscribeProto.ListSubscriptionsResponse response = client.listSubscriptions(request);
         return response.getSubscriptionsList();
     }
 
-    public List<MessageProto.Envelope> fetch(SubscribeProto.Subscription subscription){
+    public List<MessageProto.Envelope> getSubscriptionMessages(SubscribeProto.Subscription subscription){
         SubscribeProto.FetchRequest request = SubscribeProto.FetchRequest.newBuilder()
                 .setSubscription(subscription)
                 .build();

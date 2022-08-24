@@ -6,5 +6,5 @@ services:
       - '80:80'
     expose:
       - '80'
-#    env_file:
-#      - ./.env
+    env_file:
+      - ./.env

@@ -3,15 +3,19 @@ package com.MTechConsulting.TOITBuddy.GRPC;
 import io.toit.proto.toit.api.pubsub.SubscribeGrpc;
 import io.toit.proto.toit.api.pubsub.SubscribeProto;
 import io.toit.proto.toit.model.pubsub.MessageProto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.net.ssl.SSLException;
 import java.util.List;
 
+@Component
 public class PubSubClient {
     private final SubscribeGrpc.SubscribeBlockingStub client;
 
-    public PubSubClient() throws SSLException {
-        this.client = (new ClientManager()).getSubscribeGrpc();
+    @Autowired
+    public PubSubClient(ClientManager clientManager){
+        this.client = clientManager.getSubscribeGrpc();
     }
 
     public List<SubscribeProto.Subscription> getSubscriptions(){

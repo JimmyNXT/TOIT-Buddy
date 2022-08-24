@@ -2,6 +2,7 @@ package com.MTechConsulting.TOITBuddy.GRPC;
 
 import io.toit.proto.toit.api.DataProto;
 import io.toit.proto.toit.api.DataServiceGrpc;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.net.ssl.SSLException;
@@ -11,8 +12,9 @@ import java.util.List;
 public class DataClient {
     private final DataServiceGrpc.DataServiceBlockingStub client;
 
-    public DataClient() throws SSLException {
-        client = (new ClientManager()).getDataServiceGrpc();
+    @Autowired
+    public DataClient(ClientManager clientManager) {
+        client = clientManager.getDataServiceGrpc();
     }
 
     public List<DataProto.Subscription> getSubscriptions(DataProto.DataType dataType){

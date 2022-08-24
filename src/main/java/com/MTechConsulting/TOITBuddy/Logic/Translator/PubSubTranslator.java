@@ -2,9 +2,11 @@ package com.MTechConsulting.TOITBuddy.Logic.Translator;
 
 import com.MTechConsulting.TOITBuddy.Domain.DTO.PubSubMessageDTO;
 import com.MTechConsulting.TOITBuddy.Domain.DTO.PubSubSubscriptionDTO;
+import com.MTechConsulting.TOITBuddy.GRPC.ClientManager;
 import com.MTechConsulting.TOITBuddy.GRPC.PubSubClient;
 import io.toit.proto.toit.api.pubsub.SubscribeProto;
 import io.toit.proto.toit.model.pubsub.MessageProto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.net.ssl.SSLException;
@@ -17,8 +19,9 @@ import java.util.stream.Collectors;
 public class PubSubTranslator {
     private final PubSubClient client;
 
-    public PubSubTranslator() throws SSLException {
-        this.client = new PubSubClient();
+    @Autowired
+    public PubSubTranslator(PubSubClient client) {
+        this.client = client;
     }
 
     public List<SubscribeProto.Subscription> getSubscriptions(){

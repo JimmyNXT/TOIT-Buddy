@@ -8,9 +8,11 @@ import io.netty.handler.ssl.SslContextBuilder;
 import io.toit.proto.toit.api.*;
 import io.toit.proto.toit.api.pubsub.SubscribeGrpc;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.net.ssl.SSLException;
 
+@Component
 public class ClientManager {
     public static String host = "api.toit.io";
     public static int port = 443;
@@ -21,7 +23,7 @@ public class ClientManager {
 
     @Value("${com.mtechconsulting.toit-buddy.password}")
     private String password;
-    private ManagedChannel channel;
+    private final ManagedChannel channel;
     private static AuthCredentials credentials;
 
     public ClientManager(String username, String password, ManagedChannel channel) {

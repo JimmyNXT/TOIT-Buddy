@@ -6,13 +6,13 @@ import com.MTechConsulting.TOITBuddy.Logic.Translator.PubSubTranslator;
 import io.toit.proto.toit.api.pubsub.SubscribeProto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.EntityNotFoundException;
+//import org.springframework.transaction.annotation.Transactional;
+//
+//import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
-@Transactional
+//@Transactional
 public class PubSubService {
     private final PubSubTranslator translator;
 
@@ -33,8 +33,10 @@ public class PubSubService {
                 return  translator.getSubscriptionMessageDTOs(sub);
             }
         }
-        throw new EntityNotFoundException();
+//        throw new EntityNotFoundException();
+        throw new RuntimeException();
     }
+
 
     public List<PubSubMessageDTO> getMessagesByTopic(String topic){
         List<SubscribeProto.Subscription> subs = translator.getSubscriptions();
@@ -44,6 +46,8 @@ public class PubSubService {
                 return  translator.getSubscriptionMessageDTOs(sub);
             }
         }
-        throw new EntityNotFoundException();
+//        throw new EntityNotFoundException();
+        throw new RuntimeException();
+
     }
 }

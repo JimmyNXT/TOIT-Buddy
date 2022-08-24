@@ -6,13 +6,13 @@ import com.MTechConsulting.TOITBuddy.Logic.Translator.DataTranslator;
 import io.toit.proto.toit.api.DataProto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityNotFoundException;
+//import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
-@Transactional
+//@Transactional
 public class DataService {
     private final DataTranslator translator;
 
@@ -31,6 +31,7 @@ public class DataService {
                 return translator.getMessageDTOs(sub);
             }
         }
-        throw new EntityNotFoundException();
+//        throw new EntityNotFoundException();
+        throw new RuntimeException();
     }
 }
